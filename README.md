@@ -4,6 +4,32 @@
 
 # Guia rápido do WSL2 + Docker
 
+## Índice
+* [O que é o WSL2](#o-que-é-wsl2)
+* [O que é Docker](#o-que-é-docker)
+* [Porque usar WSL 2 + Docker para desenvolvimento](#porque-usar-wsl-2-+-docker-para-desenvolvimento)
+  * [Docker Toolbox](#docker-toolbox)
+  * [Docker Desktop com Hyper-V](#docker-desktop-com-hyper-v)
+  * [Docker Desktop com WSL2](#docker-desktop-com-wsl2)
+* [Requisitos mínimos](#requisitos-mínimos)
+* [Instalação do WSL 2](#instalação-do-wsl-2)
+  * [Instale a versão 20.04 do Windows 10](#instale-a-versão-20.04-do-windows-10)
+  * [Habilite o WSL no Windows 10](#habilite-o-wsl-no-windows-10)
+  * [Instale o WSL 2 no Windows 10](#instale-o-wsl-2-no-windows-10)
+  * [Atribua a versão default do WSL para a versão 2](#atribua-a-versão-default-do-wsl-para-a-versão-2)
+  * [Escolha sua distribuição Linux no Windows Store](#escolha-sua-distribuição-linux-no-windows-store)
+  * [Opcional: Desinstale o Hyper-V ](#opcional:-desinstale-o-hyper-v)
+  * [Opcional: Alterar a versão do WSL 1 de uma distribuição para a versão 2](#opcional:-alterar-a-versão-do-wsl-1-de-uma-distribuição-para-a-versão-2)
+  * [Opcional: Usar Windows Terminal como terminal padrão de desenvolvimento para Windows](#opcional:-usar-windows-terminal-como-terminal-padrão-de-desenvolvimento-para-windows)
+* [O que o WSL 2 pode usar de recursos da sua máquina](#o-que-o-wsl-2-pode-usar-de-recursos-da-sua-máquina)
+* [Integrar Docker com WSL 2](#integrar-docker-com-wsl-2)
+  * [Caso já tenha o Docker Desktop Instalado](#caso-já-tenha-o-docker-desktop-instalado)
+  * [Instale o Docker Desktop](#instale-o-docker-desktop)
+  * [Habilite o Docker dentro do WSL 2](#habilite-o-docker-dentro-do-wsl-2)
+  * [Use BuildKit and multi-stage builds](#use-buildkit-and-multi-stage-builds)
+* [Dicas e truques básicos com WSL 2](#dicas-e-truques-básicos-com-wsl-2)
+* [Dúvidas](#dúvidas)
+
 ## O que é o WSL2 
 
 Em 2016, a Microsoft anunciou a possibilidade de rodar o Linux dentro do Windows 10 como um subsistema e o nome a isto foi dado de **WSL** ou **Windows Subsystem for Linux**.
@@ -18,7 +44,7 @@ Em 2019, a Microsoft anunciou o **WSL 2**, com uma dinâmica aprimorada em rela�
 
 O WSL 2 já estava disponível na versão **Insider** do Windows 10, mas na última semana de maio de 2020 passou a estar disponível em final release na atualização **20.04** do Windows 10.
 
-**Atualização**
+**Atualização:**
 A partir de 21 de agosto de 2020, o WSL 2 também está disponível nas edições 1903 e 1909, pórem somente em sistemas x64.
 
 Com WSL 2 é possível executar Docker no Linux usando o Windows 10.
@@ -44,12 +70,12 @@ Para se utilizar Docker no Windows temos três versões:
 * Docker Desktop com Hyper-V.
 * Docker Desktop com WSL2.
 
-#### Docker Toolbox
+### Docker Toolbox
 
 Roda em cima do programa de virtualização de sistemas da Oracle, chamado de **VirtualBox**.
 O desempenho do Docker Toolbox para muitas aplicações/ferramentas pode ser muito ruim, inviabilizando seu uso.
 
-#### Docker Desktop com Hyper-V
+### Docker Desktop com Hyper-V
 
 Roda em cima do **Hyper-V** da Microsoft em vez de usar o VirtualBox usando pelo Docker Toolbox. O Docker Desktop com Hyper-V necessita da versão **PRO** do Windows 10, portanto é necessário compra-la se você não a tem.
 
@@ -57,7 +83,7 @@ O Hyper-V costuma requerer muitos recursos da máquina e apesar do desempenho se
 
 *A Docker já anunciou que vai remover o suporte ao Hyper-V futuramente.*
 
-#### Docker Desktop com WSL2
+### Docker Desktop com WSL2
 
 Roda em cima do **Virtual Machine Platform** em vez de usar o VirtualBox ou Hyper-V. Se integra com o WSL2 permitindo rodar o Docker dentro do ambiente do Linux. Não é necessário adquirir licença PRO do Windows 10, tem um grande desempenho e consome menos recursos quando comparado ao Docker Toolbox ou Docker Desktop com Hyper-V.
 
@@ -74,7 +100,7 @@ A partir de 21 de agosto de 2020, o WSL 2 também está disponível nas ediçõe
 
 ## Instalação do WSL 2
 
-#### Instale a versão 20.04 do Windows 10
+### Instale a versão 20.04 do Windows 10
 
 O WSL 2 só funciona no Windows 10 **20.04** ou superior.
 
@@ -84,7 +110,7 @@ Pode ser que seu Windows 10 já seja igual ou superior a 20.04, verifique isto a
 
 Se seu Windows 10 não for 20.04 baixe o pacote de atualização [https://go.microsoft.com/fwlink/?LinkID=799445](https://go.microsoft.com/fwlink/?LinkID=799445). A instalação pode demorar aproximadamente **1 hora**.
 
-#### Habilite o WSL no Windows 10
+### Habilite o WSL no Windows 10
 
 Execute os seguintes comandos no PowerShell em modo administrador:
 ``` bash
@@ -93,11 +119,11 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ```
 Abra o PowerShell e digite o comando **wsl**, se não funcionar reinicie sua máquina.
 
-#### Instale o WSL 2 no Windows 10
+### Instale o WSL 2 no Windows 10
 
 Baixe o Kernel do WSL 2 neste link: [https://docs.microsoft.com/pt-br/windows/wsl/wsl2-kernel](https://docs.microsoft.com/pt-br/windows/wsl/wsl2-kernel) e instale o pacote.
 
-#### Atribua a versão default do WSL para a versão 2
+### Atribua a versão default do WSL para a versão 2
 
 A versão 1 do WSL é a padrão no momento, atribua a versão default para a versão 2, assim todas as distribuições Linux instaladas serão já por default da versão 2. Execute o comando com o PowerShell:
 
@@ -105,7 +131,7 @@ A versão 1 do WSL é a padrão no momento, atribua a versão default para a ver
 wsl --set-default-version 2
 ```
 
-#### Escolha sua distribuição Linux no Windows Store
+### Escolha sua distribuição Linux no Windows Store
 
 Escolha sua distribuição Linux preferida no aplicativo Windows Store, sugerimos o Ubuntu por ser uma distribuição popular e que já vem com várias ferramentas instaladas por padrão.
 
@@ -117,11 +143,11 @@ Parabéns, seu WSL2 já está funcionando:
 
 ![Exemplo de WSL2 funcionando](img/wsl2_funcionando.png)
 
-#### (Opcional) Desinstale o Hyper-V 
+### Opcional: Desinstale o Hyper-V 
 
 Agora que temos o WSL 2 não precisamos mais do Hyper-V, desabilite-o em Painel de Controle > Programas e Recursos (se você tiver instalado o Hyper-V).
 
-#### (Opcional) Alterar a versão do WSL 1 de uma distribuição para a versão 2
+### Opcional: Alterar a versão do WSL 1 de uma distribuição para a versão 2
 
 Se você já tiver o WSL 1 na máquina e acabou de instalar a versão 2, pode-se converter sua distribuição Linux WSL 1 para WSL 2, execute o comando com o PowerShell:
 
@@ -131,7 +157,7 @@ wsl --set-version <distribution name> 2
 
 Isto pode demorar muitos minutos.
 
-#### (Opcional) Usar Windows Terminal como terminal padrão de desenvolvimento para Windows
+### Opcional: Usar Windows Terminal como terminal padrão de desenvolvimento para Windows
 
 Uma deficiência que o Windows sempre teve era prover um terminal adequado para desenvolvimento. Agora temos o **Windows Terminal** construído pela própria Microsoft que permite rodar terminais em abas, alterar cores e temas, configurar atalhos e muito mais.
 
@@ -167,21 +193,43 @@ Para aplicar estas configurações é necessário reiniciar as distribuições L
 
 ## Integrar Docker com WSL 2
 
-#### Instale o Docker Desktop
+### Caso já tenha o Docker Desktop Instalado
+
+Se já tiver instalado o Docker Desktop antes de instalar o WSL 2, ele não irá funcionar corretamente. Mas para tudo funcionar certinho, é só desinstalar o Docker Desktop e reinstalá-lo novamente depois.
+
+Para desinstalá-lo, vá em `Adicionar ou remover programas`:
+
+![Adicionar ou remover programas](img/adicionar-print.PNG)
+
+e procure por Docker Desktop. Assim que encontrá-lo, é só clicar em `Desinstalar` e seguir com o tutorial normalmente.
+
+![Remover Docker Desktop](img/remover-docker.PNG)
+
+### Instale o Docker Desktop
 
 Baixe neste link: [https://hub.docker.com/editions/community/docker-ce-desktop-windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows) e instale o Docker Desktop.
 
-#### Habilite o Docker dentro do WSL 2
+### Habilite o Docker dentro do WSL 2
 
-Clique no **ícone do Docker perto do relógio -> Settings -> Settings no topo -> Resources -> WSL Integration**.
+Clique no `ícone do Docker perto do relógio -> Settings -> Settings no topo -> Resources -> WSL Integration`.
 
-Habilite **Enable integration with my default WSL distro** e habilite sua versão Linux.
+![Docker Desktop on tray](img/docker-tray.PNG)
+
+Assim que abrir, vá em `General`, marque `Use the WSL 2 based engine` e clique em `Apply & restart`.
+
+![Docker Desktop General settings](img/docker-general-settings.PNG)
+
+Feito isso, vá em `Resources -> WSL Integration`, marque `Enable integration with my default WSL distro`, selecione a versão do Linux que deseja usar e clique em `Apply & restart`.
+
+![Docker Desktop Resources settings](img/docker-resources-settings.PNG)
+
+Com isso, seu Docker já deve estar funcionando dentro do WSL 2.
 
 ![Docker funcionando dentro do WSL 2](img/docker_funcionando_dentro_do_wsl2.png)
 
 Parabéns, você agora tem um excelente ambiente de desenvolvimento com WSL 2 e Docker.
 
-#### Use BuildKit and multi-stage builds
+### Use BuildKit and multi-stage builds
 
 Acrescente **export DOCKER_BUILDKIT=1** no final do arquivo .profile do seu usuário do Linux para ganhar mais performance ao realizar builds com Docker. Execute o comando **source ~/.profile** para carregar esta variável de ambiente no ambiente do seu WSL 2.
 
