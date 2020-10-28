@@ -18,9 +18,9 @@
   * [Instale o WSL 2 no Windows 10](#instale-o-wsl-2-no-windows-10)
   * [Atribua a versão default do WSL para a versão 2](#atribua-a-versão-default-do-wsl-para-a-versão-2)
   * [Escolha sua distribuição Linux no Windows Store](#escolha-sua-distribuição-linux-no-windows-store)
-  * [Opcional: Desinstale o Hyper-V ](#opcional:-desinstale-o-hyper-v)
-  * [Opcional: Alterar a versão do WSL 1 de uma distribuição para a versão 2](#opcional:-alterar-a-versão-do-wsl-1-de-uma-distribuição-para-a-versão-2)
-  * [Opcional: Usar Windows Terminal como terminal padrão de desenvolvimento para Windows](#opcional:-usar-windows-terminal-como-terminal-padrão-de-desenvolvimento-para-windows)
+  * [Opcional-Desinstale o Hyper-V ](#opcional-desinstale-o-hyper-v)
+  * [Opcional-Alterar a versão do WSL 1 de uma distribuição para a versão 2](#opcional-alterar-a-versão-do-wsl-1-de-uma-distribuição-para-a-versão-2)
+  * [Opcional-Usar Windows Terminal como terminal padrão de desenvolvimento para Windows](#opcional-usar-windows-terminal-como-terminal-padrão-de-desenvolvimento-para-windows)
 * [O que o WSL 2 pode usar de recursos da sua máquina](#o-que-o-wsl-2-pode-usar-de-recursos-da-sua-máquina)
 * [Integrar Docker com WSL 2](#integrar-docker-com-wsl-2)
   * [Caso já tenha o Docker Desktop Instalado](#caso-já-tenha-o-docker-desktop-instalado)
@@ -143,11 +143,11 @@ Parabéns, seu WSL2 já está funcionando:
 
 ![Exemplo de WSL2 funcionando](img/wsl2_funcionando.png)
 
-### Opcional: Desinstale o Hyper-V 
+### Opcional-Desinstale o Hyper-V 
 
 Agora que temos o WSL 2 não precisamos mais do Hyper-V, desabilite-o em Painel de Controle > Programas e Recursos (se você tiver instalado o Hyper-V).
 
-### Opcional: Alterar a versão do WSL 1 de uma distribuição para a versão 2
+### Opcional-Alterar a versão do WSL 1 de uma distribuição para a versão 2
 
 Se você já tiver o WSL 1 na máquina e acabou de instalar a versão 2, pode-se converter sua distribuição Linux WSL 1 para WSL 2, execute o comando com o PowerShell:
 
@@ -157,7 +157,7 @@ wsl --set-version <distribution name> 2
 
 Isto pode demorar muitos minutos.
 
-### Opcional: Usar Windows Terminal como terminal padrão de desenvolvimento para Windows
+### Opcional-Usar Windows Terminal como terminal padrão de desenvolvimento para Windows
 
 Uma deficiência que o Windows sempre teve era prover um terminal adequado para desenvolvimento. Agora temos o **Windows Terminal** construído pela própria Microsoft que permite rodar terminais em abas, alterar cores e temas, configurar atalhos e muito mais.
 
