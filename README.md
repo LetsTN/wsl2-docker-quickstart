@@ -104,7 +104,7 @@ A partir de 21 de agosto de 2020, o WSL 2 também está disponível nas ediçõe
 
 O WSL 2 só funciona no Windows 10 **20.04** ou superior.
 
-Pode ser que seu Windows 10 já seja igual ou superior a 20.04, verifique isto acessando o **menu de notificações perto do relógio > Todas as configurações > Sistema > Sobre**.
+Pode ser que seu Windows 10 já seja igual ou superior a 20.04, verifique isto acessando o `menu de notificações perto do relógio > Todas as configurações > Sistema > Sobre`.
 
 ![Windows 10 20.04](img/windows_10_2004.png)
 
@@ -117,7 +117,7 @@ Execute os seguintes comandos no PowerShell em modo administrador:
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
-Abra o PowerShell e digite o comando **wsl**, se não funcionar reinicie sua máquina.
+Abra o PowerShell e digite o comando `wsl`, se não funcionar reinicie sua máquina.
 
 ### Instale o WSL 2 no Windows 10
 
@@ -159,7 +159,7 @@ Isto pode demorar muitos minutos.
 
 ### Opcional-Usar Windows Terminal como terminal padrão de desenvolvimento para Windows
 
-Uma deficiência que o Windows sempre teve era prover um terminal adequado para desenvolvimento. Agora temos o **Windows Terminal** construído pela própria Microsoft que permite rodar terminais em abas, alterar cores e temas, configurar atalhos e muito mais.
+Uma deficiência que o Windows sempre teve era prover um terminal adequado para desenvolvimento. Agora temos o `Windows Terminal` construído pela própria Microsoft que permite rodar terminais em abas, alterar cores e temas, configurar atalhos e muito mais.
 
 Instale-o pelo Windows Store e use estas [configurações padrões](windows-terminal-settings.json) para habilitar WSL 2, Git Bash e o tema drácula e alguns atalhos.
 
@@ -176,7 +176,7 @@ Podemos dizer que o WSL 2 tem acesso quase que total ao recursos de sua máquina
 
 Isto pode não ser interessante, uma vez que o WSL 2 pode usar praticamente todos os recursos de sua máquina, mas podemos configurar limites.
 
-Crie um arquivo chamado **.wslconfig** na raiz da sua pasta de usuário **(C:\Users\<seu_usuario>)** e defina estas configurações:
+Crie um arquivo chamado `.wslconfig` na raiz da sua pasta de usuário `(C:\Users\<seu_usuario>)` e defina estas configurações:
 
 ``` txt
 [wsl2]
@@ -199,7 +199,7 @@ Se já tiver instalado o Docker Desktop antes de instalar o WSL 2, ele não irá
 
 Para desinstalá-lo, vá em `Adicionar ou remover programas`:
 
-![Adicionar ou remover programas](img/adicionar-print.PNG)
+![Adicionar ou remover programas](img/adicionar-print.png)
 
 e procure por Docker Desktop. Assim que encontrá-lo, é só clicar em `Desinstalar` e seguir com o tutorial normalmente.
 
@@ -213,7 +213,7 @@ Baixe neste link: [https://hub.docker.com/editions/community/docker-ce-desktop-w
 
 Clique no `ícone do Docker perto do relógio -> Settings -> Settings no topo -> Resources -> WSL Integration`.
 
-![Docker Desktop on tray](img/docker-tray.PNG)
+![Docker Desktop on tray](img/docker-tray.png)
 
 Assim que abrir, vá em `General`, marque `Use the WSL 2 based engine` e clique em `Apply & restart`.
 
